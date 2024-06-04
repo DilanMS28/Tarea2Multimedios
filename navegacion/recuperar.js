@@ -53,12 +53,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   imgLogo: {},
+
   titulo: {
     fontWeight: "bold",
     fontSize: 60,
     color: "#000",
-    textAlign: "center",
+    textAlign: "left",
     marginBottom: 1,
+    marginRight: 60,
   },
   texto: {
     fontSize: 20,
@@ -86,6 +88,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 18,
     textAlign: "right",
+    marginLeft: 220,
   },
 
   btnLoginGradient: {

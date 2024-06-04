@@ -66,6 +66,8 @@ const styles = StyleSheet.create({
     fontWeight: "light",
     color: "gray",
     marginBottom: 30,
+    marginTop: 20,
+    marginRight: 150,
   },
   txtInput: {
     backgroundColor: "#fff",
@@ -84,7 +86,8 @@ const styles = StyleSheet.create({
     marginBottom: 50,
     fontWeight: "600",
     fontSize: 18,
-    textAlign: "left",
+    textAlign: "rigth",
+    marginLeft: 100,
   },
 
   btnLoginGradient: {
@@ -108,7 +111,7 @@ const styles = StyleSheet.create({
   txtCrearCuenta: {
     fontSize: 18,
     color: "#00C1BB",
-    marginTop: 90,
+    marginTop: 70,
     marginBottom: 30,
   },
   txtRegistrarse: {

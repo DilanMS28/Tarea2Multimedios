@@ -67,6 +67,8 @@ const styles = StyleSheet.create({
     fontWeight: "light",
     color: "gray",
     marginBottom: 30,
+    marginRight: 80,
+    marginTop: 20,
   },
   txtInput: {
     backgroundColor: "#fff",
@@ -86,6 +88,7 @@ const styles = StyleSheet.create({
     fontWeight: "600",
     fontSize: 18,
     textAlign: "right",
+    marginLeft: 220,
   },
 
   btnLoginGradient: {
