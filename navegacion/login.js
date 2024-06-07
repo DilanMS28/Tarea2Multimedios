@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
     fontWeight: "light",
     color: "gray",
     marginBottom: 30,
-    marginTop: 20,
+    // marginTop: 20,
     marginRight: 150,
   },
   txtInput: {

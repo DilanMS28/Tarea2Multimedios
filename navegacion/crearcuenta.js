@@ -1,11 +1,55 @@
 import { StatusBar } from "expo-status-bar";
-import {Button,Image,StyleSheet,Text,TextInput,TouchableOpacity,View,} from "react-native";
+import {Image,StyleSheet,Text,TextInput,TouchableOpacity,View,} from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import { useNavigation } from "@react-navigation/native";
+import { useState } from "react";
+
+
+//importar firebases
+import appFirebase from '../accesoFirebase';
+import { addDoc, collection, getFirestore } from "firebase/firestore";
+
+//almacenar la conexión
+const db = getFirestore(appFirebase)
+
 
 export default function CrearCuenta() {
     //crear el navigation para poder hacer las rutas
     const navigation = useNavigation()
+
+    const inicioEstado = {
+      nombreCompleto: "",
+      email: "",
+      clave: "",
+  }
+
+  const [estado, setEstado] = useState(inicioEstado);
+
+
+  // se encarga de recibir los valores de los input
+  const handleChangeText = (value, name)=>{
+      setEstado({...estado, [name]:value })
+  }
+
+  // //funcion para ver los estados
+  // const RegistrarUsuario = () => {
+  //   console.log(estado)
+  //   // navigation.navigate("login")
+  // };
+
+  //enviar los datos al firebase a la colección por medio de una función asincrónica
+  const RegistrarUsuario = async()=>{
+    try {
+      await addDoc(collection(db, 'usuarios'),{...estado})
+
+      Alert.alert('Alerta', 'El usuario se registró con éxito')
+
+      props.navigation.navigate('LoginApp')
+     
+    } catch  {
+      console.error(error)
+    }
+  }
 
 
 
@@ -16,16 +60,16 @@ export default function CrearCuenta() {
       <Text style={styles.titulo}>Crear Cuenta</Text>
       <Text style={styles.texto}>Ingresa los datos solicitados: </Text>
 
-      <TextInput style={styles.txtInput} placeholder="Nombre completo" keyboardType="ascii-capable" />
-      <TextInput style={styles.txtInput} placeholder="Correo electrónico" keyboardType="email-address"/>
-      <TextInput style={styles.txtInput} placeholder="Contraseña" secureTextEntry={true}/>
+      <TextInput style={styles.txtInput} placeholder="Nombre completo" keyboardType="ascii-capable"  value={estado.nombreCompleto} onChangeText={(value)=>handleChangeText(value, "nombreCompleto")}/>
+      <TextInput style={styles.txtInput} placeholder="Correo electrónico" keyboardType="email-address" value={estado.email} onChangeText={(value)=>handleChangeText(value, "email")}/>
+      <TextInput style={styles.txtInput} placeholder="Contraseña" secureTextEntry={true} value={estado.contraseña} onChangeText={(value)=>handleChangeText(value, "clave")}/>
 
     <TouchableOpacity onPress={()=> navigation.navigate("Login")}>      
         <Text style={styles.txtIniciarSesion}>Iniciar Sesión</Text>
     </TouchableOpacity>
 
 
-      <TouchableOpacity onPress={()=> navigation.navigate("Login")}>
+      <TouchableOpacity onPress={()=> RegistrarUsuario()}>
         <LinearGradient
           colors={["#00C1BB", "#005B58"]}
           start={{ x: 0, y: 0 }}
@@ -118,6 +162,6 @@ const styles = StyleSheet.create({
     fontWeight: "900",
     color: "#00C1BB",
     fontSize: 18,
-    marginBottom: 40,
+    marginBottom: 60,
   },
 });
