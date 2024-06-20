@@ -9,6 +9,8 @@ import CrearCuenta from "./navegacion/crearcuenta";
 import RecuperarCuenta from "./navegacion/recuperarCuenta";
 import Recuperar from "./navegacion/recuperar";
 import Home from "./navegacion/home";
+import Listar from "./navegacion/listaUser";
+import MostrarUsuario from "./navegacion/mostrarUsuario";
 
 //crear el stack
 const StackNav = createStackNavigator();
@@ -22,6 +24,8 @@ function Stacks() {
       <StackNav.Screen name="RecuperarCuenta" component={RecuperarCuenta} />
       <StackNav.Screen name="Recuperar" component={Recuperar} />
       <StackNav.Screen name="Home" component={Home} />
+      <StackNav.Screen name="listauser" component={Listar} />
+      <StackNav.Screen name="mostrarUsuario" component={MostrarUsuario} />
     </StackNav.Navigator>
   );
 }

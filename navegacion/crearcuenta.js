@@ -42,12 +42,13 @@ export default function CrearCuenta() {
     try {
       await addDoc(collection(db, 'usuarios'),{...estado})
 
-      Alert.alert('Alerta', 'El usuario se registró con éxito')
+      alert('El usuario se registró con éxito')
 
-      props.navigation.navigate('LoginApp')
+      // props.navigation.navigate('listauser')
+      navigation.navigate('listauser')
      
-    } catch  {
-      console.error(error)
+    } catch (error)  {
+      console.log(error)
     }
   }
 
@@ -84,6 +85,9 @@ export default function CrearCuenta() {
       <Text style={styles.txtCrearCuenta}>Ya tienes cuenta</Text>
       <TouchableOpacity onPress={()=>navigation.navigate("Recuperar")}>
           <Text style={styles.txtOlvidarContraseña}>¿Has olvidado su contraseña?</Text>
+      </TouchableOpacity>
+      <TouchableOpacity onPress={()=>navigation.navigate("listauser")}>
+          <Text style={styles.txtOlvidarContraseña}>Ver listado</Text>
       </TouchableOpacity>
 
       <StatusBar style="auto" />
